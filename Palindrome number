@@ -1,0 +1,19 @@
+def Palindrome(x: int) -> bool:
+    if x < 0:
+        return False
+    reversed_x = 0
+    temp_x = x
+    while temp_x != 0:
+        digit = temp_x % 10
+        temp_x //= 10
+        reversed_x = reversed_x * 10 + digit
+    return x == reversed_x
+
+x = 121
+print(Palindrome(x)) 
+
+x = -121
+print(Palindrome(x))  
+
+x = 10
+print(Palindrome(x)) 
