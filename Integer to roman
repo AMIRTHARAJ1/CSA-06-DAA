@@ -1,0 +1,19 @@
+def printRoman(number):
+    num = [1,5,10,50,100, 500,1000]
+    sym = ["I","V","X","L", "C","D", "M"]
+    i = 6
+     
+    while number:
+        div = number // num[i]
+        number %= num[i]
+ 
+        while div:
+            print(sym[i], end = "")
+            div -= 1
+        i -= 1
+ 
+# Driver code
+if __name__ == "__main__":
+    number = 3
+    print("Roman value is:", end = " ")
+    printRoman(number)
