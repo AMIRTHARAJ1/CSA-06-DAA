@@ -1,0 +1,17 @@
+def longestCommonPrefix(S):
+    if "" in S or S == []:
+        return ""
+    preix = S[0]
+    for i in range(1,len(S)):
+        while(preix != ""):
+            try:
+                if str.index(str(S[i]),preix) == 0:
+                    break
+                else:
+                    preix = preix[:-1]
+            except:              
+                preix = preix[:-1]
+    return preix
+if __name__ == "__main__":
+    s = ['flower', 'flow', 'flight']
+    print(longestCommonPrefix(s))
