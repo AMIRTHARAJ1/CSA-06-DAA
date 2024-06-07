@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int numbers[] = {4, 7, 2, 9, 1, 5};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    
+    for (int i = 0; i < size; i++) {
+        int min = numbers[i];
+        int max = numbers[i];
+        
+        for (int j = i + 1; j < size; j++) {
+            if (numbers[j] < min) {
+                min = numbers[j];
+            }
+            if (numbers[j] > max) {
+                max = numbers[j];
+            }
+        }
+        
+        printf("For number %d: Min = %d, Max = %d\n", numbers[i], min, max);
+    }
+    
+    return 0;
+}
