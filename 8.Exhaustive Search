@@ -1,0 +1,17 @@
+def knapsack(W, wt, val, n):
+    max_value = 0
+    for i in range(1 << n):
+        total_weight = total_value = 0
+        for j in range(n):
+            if i & (1 << j):
+                total_weight += wt[j]
+                total_value += val[j]
+        if total_weight <= W:
+            max_value = max(max_value, total_value)
+    return max_value
+
+val = [60, 100, 120]
+wt = [10, 20, 30]
+W = 50
+n = len(val)
+print("Maximum value in Knapsack =", knapsack(W, wt, val, n))
