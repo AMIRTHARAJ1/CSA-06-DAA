@@ -1,0 +1,19 @@
+import itertools
+
+def tsp(graph, start):
+    vertices = list(range(len(graph)))
+    vertices.remove(start)
+    min_path = float('inf')
+    for perm in itertools.permutations(vertices):
+        current_path_weight = 0
+        k = start
+        for j in perm:
+            current_path_weight += graph[k][j]
+            k = j
+        current_path_weight += graph[k][start]
+        min_path = min(min_path, current_path_weight)
+    return min_path
+
+graph = [[0, 10, 15, 20], [10, 0, 35, 25], [15, 35, 0, 30], [20, 25, 30, 0]]
+start = 0
+print("Minimum cost:", tsp(graph, start))
