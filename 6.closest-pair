@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <float.h>
+#include <math.h>
+
+// Structure to represent a point in 2D space
+typedef struct {
+    int x, y;
+} Point;
+
+// Function to calculate the distance between two points
+double distance(Point p1, Point p2) {
+    return sqrt((p1.x - p2.x) * (p1.x - p2.x) +
+                (p1.y - p2.y) * (p1.y - p2.y));
+}
+
+// Function to find the closest pair of points using brute force
+void closestPair(Point points[], int n) {
+    double minDist = DBL_MAX;
+    Point closest1, closest2;
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            double dist = distance(points[i], points[j]);
+            if (dist < minDist) {
+                minDist = dist;
+                closest1 = points[i];
+                closest2 = points[j];
+            }
+        }
+    }
+
+    printf("The closest pair of points are (%d, %d) and (%d, %d) with a distance of %f\n",
+           closest1.x, closest1.y, closest2.x, closest2.y, minDist);
+}
+
+int main() {
+    Point points[] = {{2, 3}, {12, 30}, {40, 50}, {5, 1}, {12, 10}, {3, 4}};
+    int n = sizeof(points) / sizeof(points[0]);
+    closestPair(points, n);
+    return 0;
+}
