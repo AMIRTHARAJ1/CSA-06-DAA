@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+void bruteForceSearch(char text[], char pattern[]) {
+    int n = strlen(text);
+    int m = strlen(pattern);
+    int found = 0;
+
+    for (int i = 0; i <= n - m; i++) {
+        int j;
+
+        // For current index i, check for pattern match
+        for (j = 0; j < m; j++) {
+            if (text[i + j] != pattern[j]) {
+                break;
+            }
+        }
+
+        // If pattern is found
+        if (j == m) {
+            printf("Pattern found at index %d\n", i);
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("Pattern not found in the text\n");
+    }
+}
+
+int main() {
+    char text[] = "ABABDABACDABABCABAB";
+    char pattern[] = "ABABCABAB";
+
+    printf("Text: %s\n", text);
+    printf("Pattern: %s\n", pattern);
+
+    bruteForceSearch(text, pattern);
+
+    return 0;
+}
